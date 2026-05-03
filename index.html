@@ -1,67 +1,69 @@
 <!DOCTYPE html>
-<html lang="es">
+<html lang="en">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
-    <title>Nataly Giraldo · Work Portfolio & Polymath Notebook</title>
+    <title>Alex Morgan · Dev Portfolio & Professional Logbook</title>
+  <link rel="stylesheet" href="./style.css">
 </head>
 <body>
 <div class="container">
-    <!-- header profesional -->
+    <!-- English header / professional hero -->
     <div class="hero">
         <div class="hero-content">
             <div class="hero-text">
-                <h1>Nataly Giraldo · Polymath</h1>
-                <div class="tagline">A psychologist · A systems and computer engineering student & a writer.</div>
+                <h1>Alex Morgan · Software Engineer</h1>
+                <div class="tagline">polyglot developer · technical leadership & continuous growth</div>
             </div>
             <div class="hero-badge">
-                <p>📌 portfolio</p>
+                <p>📌 live portfolio · auto‑saved progress</p>
             </div>
         </div>
         <div style="margin-top: 1rem; font-size: 0.85rem; color: #2c627e;">
-            <span>⚡ Continuous and self-taught learning</span>
+            <span>⚡ Cloud architecture · full‑stack development · team empowerment</span>
         </div>
     </div>
 
-    <!-- SECCIÓN 1: Tecnologías que manejo (barras horizontales + editable) -->
+    <!-- SECTION 1: Technical skills (horizontal bars, editable) -->
     <div class="section-card">
         <div class="section-title">
-            <h2>🛠️ Competencias técnicas</h2>
-            <span>nivel de dominio · editable ✏️</span>
+            <h2>🛠️ Technical skills</h2>
+            <span>proficiency level · editable ✏️</span>
         </div>
         <div id="skillsGrid" class="skills-grid"></div>
-        <div class="note">* Ajusta el deslizador para reflejar tu expertise real</div>
+        <div class="note">* Drag the slider to reflect your current expertise</div>
     </div>
 
-    <!-- SECCIÓN 2: Idiomas (8 barras de progreso horizontales) -->
+    <!-- SECTION 2: Languages (8 horizontal progress bars) -->
     <div class="section-card">
         <div class="section-title">
-            <h2>🌍 Idiomas · fluidez profesional</h2>
-            <span>8 lenguas · progreso horizontal</span>
+            <h2>🌍 Languages · professional fluency</h2>
+            <span>8 languages · horizontal progress</span>
         </div>
         <div id="languagesGrid" class="languages-grid"></div>
-        <div class="note">* Cada barra representa tu nivel comunicativo (0–100%)</div>
+        <div class="note">* Each bar shows your communication level (0–100%)</div>
     </div>
 
-    <!-- SECCIÓN 3: Bitácora profesional (blog) -->
+    <!-- SECTION 3: Professional blog / logbook -->
     <div class="section-card blog-section">
         <div class="section-title">
-            <h2>📘 Bitácora profesional</h2>
-            <span>logros, proyectos y reflexiones</span>
+            <h2>📘 Professional logbook</h2>
+            <span>achievements, projects & reflections</span>
         </div>
         <div id="blogContainer" class="blog-posts"></div>
         <div class="add-post-form">
-            <input type="text" id="blogTitle" placeholder="Título del hito (ej: 'Certificación AWS + liderazgo técnico')" maxlength="100">
-            <textarea id="blogContent" rows="2" placeholder="Comparte tu aprendizaje, retos superados, nuevas herramientas..."></textarea>
-            <button id="publishBlogBtn">➕ Publicar entrada</button>
+            <input type="text" id="blogTitle" placeholder="Post title (e.g. 'AWS certification + tech lead milestone')" maxlength="100">
+            <textarea id="blogContent" rows="2" placeholder="Share your learnings, breakthroughs, new tools..."></textarea>
+            <button id="publishBlogBtn">➕ Publish entry</button>
         </div>
-        <p style="font-size:0.7rem; margin-top:0.8rem;">📌 Los datos se guardan localmente. Registra tu evolución como profesional polímata.</p>
+        <p style="font-size:0.7rem; margin-top:0.8rem;">📌 Data is stored locally. Track your evolution as a professional polymath.</p>
     </div>
     <footer>
-        🧠 Portafolio interactivo · datos persistentes · diseñado para tu crecimiento profesional
+        🧠 Interactive portfolio · persistent data · built for your growth
         <span id="saveToast" style="margin-left: 0.5rem; opacity:0.7;"></span>
     </footer>
-  
 </div>
+
+  <script src="script.js"></script>
 </body>
 </html>
