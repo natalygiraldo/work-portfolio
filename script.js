@@ -14,13 +14,13 @@
     // 8 languages (names can be edited, but interface in English)
     const DEFAULT_LANGUAGES = [
         { name: "Spanish (native)", progress: 100 },
-        { name: "English", progress: 92 },
-        { name: "French", progress: 68 },
-        { name: "German", progress: 54 },
-        { name: "Portuguese", progress: 71 },
-        { name: "Italian", progress: 47 },
-        { name: "Mandarin", progress: 33 },
-        { name: "Russian", progress: 28 }
+        { name: "Portuguese", progress: 92 },
+        { name: "English", progress: 68 },
+        { name: "French", progress: 54 },
+        { name: "Italian", progress: 71 },
+        { name: "Mandarin", progress: 47 },
+        { name: "Russian", progress: 33 },
+        { name: "Arabic", progress: 28 }
     ];
 
     // Initial blog posts (in English)
