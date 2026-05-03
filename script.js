@@ -1,5 +1,5 @@
-    // ------------------------- DATOS PREDETERMINADOS -------------------------
-    // Tecnologías (6-8 items) con nombre y nivel
+    // ------------------------- DEFAULT DATA (ENGLISH ORIENTED) -------------------------
+    // Technical skills (keep names in English, levels as example)
     const DEFAULT_SKILLS = [
         { name: "JavaScript / TypeScript", progress: 88 },
         { name: "React & Next.js", progress: 82 },
@@ -8,34 +8,34 @@
         { name: "SQL (PostgreSQL, MySQL)", progress: 80 },
         { name: "Git & GitHub Actions", progress: 78 },
         { name: "Cloud (AWS/Azure)", progress: 72 },
-        { name: "Metodologías Ágiles", progress: 88 }
+        { name: "Agile Methodologies", progress: 88 }
     ];
 
-    // 8 idiomas para el perfil profesional (nombres y niveles)
+    // 8 languages (names can be edited, but interface in English)
     const DEFAULT_LANGUAGES = [
-        { name: "Español (nativo)", progress: 100 },
-        { name: "Inglés", progress: 92 },
-        { name: "Francés", progress: 68 },
-        { name: "Alemán", progress: 54 },
-        { name: "Portugués", progress: 71 },
-        { name: "Italiano", progress: 47 },
-        { name: "Mandarín", progress: 33 },
-        { name: "Ruso", progress: 28 }
+        { name: "Spanish (native)", progress: 100 },
+        { name: "English", progress: 92 },
+        { name: "French", progress: 68 },
+        { name: "German", progress: 54 },
+        { name: "Portuguese", progress: 71 },
+        { name: "Italian", progress: 47 },
+        { name: "Mandarin", progress: 33 },
+        { name: "Russian", progress: 28 }
     ];
 
-    // Posts iniciales (bitácora profesional)
+    // Initial blog posts (in English)
     const DEFAULT_POSTS = [
-        { id: "blog1", title: "🚀 Lanzamiento de plataforma interna", content: "Implementé un dashboard full-stack con React + FastAPI, reduciendo tiempos de reportes en un 35%. Mejoré la experiencia del equipo de datos.", date: "15 mar 2026" },
-        { id: "blog2", title: "📘 Certificación en Arquitectura Cloud", content: "Aprobé la certificación AWS Solutions Architect. Diseñé una arquitectura serverless para el proyecto interno de analytics.", date: "2 feb 2026" },
-        { id: "blog3", title: "🗣️ Mentoría técnica + liderazgo", content: "Coordiné un grupo de 4 juniors en la migración de microservicios. Incorporamos pruebas automáticas y mejoramos coverage al 78%.", date: "10 ene 2026" }
+        { id: "blog1", title: "🚀 Launched internal platform", content: "I built a full‑stack dashboard with React + FastAPI, reducing reporting time by 35%. Improved team data experience.", date: "15 Mar 2026" },
+        { id: "blog2", title: "📘 AWS Solutions Architect certified", content: "Earned the AWS Solutions Architect cert. Designed a serverless architecture for the internal analytics project.", date: "2 Feb 2026" },
+        { id: "blog3", title: "🗣️ Mentorship & technical leadership", content: "Coordinated 4 juniors in migrating microservices. Added automated tests, increased coverage to 78%.", date: "10 Jan 2026" }
     ];
 
-    // ---------- ESTADO ----------
-    let skills = [];          // array de {name, progress}
-    let languages = [];      // array de {name, progress}
-    let blogPosts = [];      // array de {id, title, content, date}
+    // ---------- STATE ----------
+    let skills = [];          // array of {name, progress}
+    let languages = [];      // array of {name, progress}
+    let blogPosts = [];      // array of {id, title, content, date}
 
-    // Elementos DOM
+    // DOM elements
     const skillsGrid = document.getElementById("skillsGrid");
     const languagesGridEl = document.getElementById("languagesGrid");
     const blogContainer = document.getElementById("blogContainer");
@@ -54,9 +54,9 @@
         localStorage.setItem("prof_blog", JSON.stringify(blogPosts));
     }
 
-    // carga inicial con localStorage
+    // load initial data from localStorage or defaults
     function loadInitialData() {
-        // Cargar skills
+        // Load skills
         const storedSkills = localStorage.getItem("prof_skills");
         if (storedSkills) {
             try {
@@ -71,7 +71,7 @@
             skills = JSON.parse(JSON.stringify(DEFAULT_SKILLS));
         }
         
-        // Cargar idiomas (debe tener exactamente 8)
+        // Load languages (must be exactly 8)
         const storedLangs = localStorage.getItem("prof_languages");
         if (storedLangs) {
             try {
@@ -86,7 +86,7 @@
             languages = JSON.parse(JSON.stringify(DEFAULT_LANGUAGES));
         }
 
-        // cargar blog
+        // Load blog
         const storedBlog = localStorage.getItem("prof_blog");
         if (storedBlog) {
             try {
@@ -100,14 +100,14 @@
         } else {
             blogPosts = [...DEFAULT_POSTS];
         }
-        // asegurar IDs válidos
+        // ensure IDs
         blogPosts = blogPosts.map((post, idx) => {
             if (!post.id) return { ...post, id: Date.now() + idx + Math.random() };
             return post;
         });
     }
 
-    // Render competencias técnicas (con barras, slider y edición de nombre)
+    // Render technical skills (with bar, slider, editable name)
     function renderSkills() {
         if (!skillsGrid) return;
         skillsGrid.innerHTML = "";
@@ -117,14 +117,13 @@
             card.className = "skill-card";
             card.dataset.index = idx;
             
-            // header nombre + botón editar
             const headerDiv = document.createElement("div");
             headerDiv.className = "item-header";
             const nameDiv = document.createElement("div");
             nameDiv.className = "item-name";
             nameDiv.innerHTML = `
                 <span class="skill-name-text">${escapeHtml(skill.name)}</span>
-                <button class="edit-btn edit-skill-name" data-idx="${idx}" title="Editar nombre técnico">✏️</button>
+                <button class="edit-btn edit-skill-name" data-idx="${idx}" title="Edit skill name">✏️</button>
             `;
             const percentSpan = document.createElement("div");
             percentSpan.className = "percent-badge";
@@ -132,7 +131,6 @@
             headerDiv.appendChild(nameDiv);
             headerDiv.appendChild(percentSpan);
             
-            // barra horizontal
             const barContainer = document.createElement("div");
             barContainer.className = "progress-bar-container";
             const fill = document.createElement("div");
@@ -140,7 +138,6 @@
             fill.style.width = `${percent}%`;
             barContainer.appendChild(fill);
             
-            // slider
             const sliderDiv = document.createElement("div");
             sliderDiv.className = "slider-container";
             const range = document.createElement("input");
@@ -158,7 +155,7 @@
                 skills[idx].progress = newVal;
                 percentSpan.innerText = `${newVal}%`;
                 saveSkillsToLocal();
-                showToastGuardado();
+                showToastSaved();
             });
             sliderDiv.appendChild(range);
             sliderDiv.appendChild(valueSpan);
@@ -169,24 +166,24 @@
             skillsGrid.appendChild(card);
         });
         
-        // agregar eventos editar nombre
+        // attach edit name events
         document.querySelectorAll(".edit-skill-name").forEach(btn => {
             btn.addEventListener("click", (e) => {
                 const idx = btn.getAttribute("data-idx");
                 const currentName = skills[idx].name;
-                const newName = prompt("Editar nombre de la tecnología / habilidad:", currentName);
+                const newName = prompt("Edit skill / technology name:", currentName);
                 if (newName && newName.trim() !== "") {
                     skills[idx].name = newName.trim().substring(0, 45);
                     const nameSpan = btn.closest(".skill-card")?.querySelector(".skill-name-text");
                     if (nameSpan) nameSpan.innerText = skills[idx].name;
                     saveSkillsToLocal();
-                    showToastGuardado();
+                    showToastSaved();
                 }
             });
         });
     }
 
-    // Renderizar 8 idiomas (exactamente 8 barras horizontales)
+    // Render 8 languages (exactly 8 horizontal bars)
     function renderLanguages() {
         if (!languagesGridEl) return;
         languagesGridEl.innerHTML = "";
@@ -201,7 +198,7 @@
             nameDiv.className = "item-name";
             nameDiv.innerHTML = `
                 <span class="lang-name-text">${escapeHtml(lang.name)}</span>
-                <button class="edit-btn edit-lang-name" data-idx="${idx}" title="Editar idioma">✏️</button>
+                <button class="edit-btn edit-lang-name" data-idx="${idx}" title="Edit language name">✏️</button>
             `;
             const percentSpan = document.createElement("div");
             percentSpan.className = "percent-badge";
@@ -233,7 +230,7 @@
                 languages[idx].progress = newVal;
                 percentSpan.innerText = `${newVal}%`;
                 saveLanguagesToLocal();
-                showToastGuardado();
+                showToastSaved();
             });
             sliderDiv.appendChild(range);
             sliderDiv.appendChild(valueSpan);
@@ -244,32 +241,31 @@
             languagesGridEl.appendChild(card);
         });
         
-        // eventos editar nombre idioma
+        // edit language name events
         document.querySelectorAll(".edit-lang-name").forEach(btn => {
             btn.addEventListener("click", (e) => {
                 const idx = btn.getAttribute("data-idx");
                 const current = languages[idx].name;
-                const newName = prompt("Editar nombre del idioma:", current);
+                const newName = prompt("Edit language name:", current);
                 if (newName && newName.trim() !== "") {
                     languages[idx].name = newName.trim().substring(0, 30);
                     const textSpan = btn.closest(".lang-card")?.querySelector(".lang-name-text");
                     if (textSpan) textSpan.innerText = languages[idx].name;
                     saveLanguagesToLocal();
-                    showToastGuardado();
+                    showToastSaved();
                 }
             });
         });
     }
 
-    // Bitácora profesional: mostrar posts
+    // Professional blog render
     function renderBlog() {
         if (!blogContainer) return;
         if (!blogPosts.length) {
-            blogContainer.innerHTML = `<div class="empty-message">📌 Aún no hay entradas. Publica tu primer hito profesional.</div>`;
+            blogContainer.innerHTML = `<div class="empty-message">📌 No entries yet. Publish your first professional milestone.</div>`;
             return;
         }
         blogContainer.innerHTML = "";
-        // ordenar más reciente primero (por fecha descendente)
         const sorted = [...blogPosts].sort((a,b) => new Date(b.date) - new Date(a.date));
         sorted.forEach(post => {
             const postDiv = document.createElement("div");
@@ -281,7 +277,7 @@
                 <span>📌 ${escapeHtml(post.title)}</span>
                 <div style="display: flex; gap: 12px; align-items: center;">
                     <span class="post-date">${escapeHtml(post.date)}</span>
-                    <button class="delete-post" data-id="${post.id}" title="Eliminar entrada">🗑️</button>
+                    <button class="delete-post" data-id="${post.id}" title="Delete entry">🗑️</button>
                 </div>
             `;
             const contentDiv = document.createElement("div");
@@ -292,7 +288,6 @@
             blogContainer.appendChild(postDiv);
         });
         
-        // eventos eliminar
         document.querySelectorAll(".delete-post").forEach(btn => {
             btn.addEventListener("click", (e) => {
                 const id = btn.getAttribute("data-id");
@@ -305,16 +300,16 @@
         blogPosts = blogPosts.filter(p => p.id !== id);
         saveBlogToLocal();
         renderBlog();
-        showToastGuardado();
+        showToastSaved();
     }
     
     function addBlogPost(title, content) {
         if (!title.trim() || !content.trim()) {
-            alert("❌ Por favor, escribe título y contenido para tu bitácora profesional.");
+            alert("❌ Please enter both title and content for your professional logbook.");
             return false;
         }
         const today = new Date();
-        const formattedDate = today.toLocaleDateString('es-ES', { year: 'numeric', month: 'short', day: 'numeric' });
+        const formattedDate = today.toLocaleDateString('en-US', { year: 'numeric', month: 'short', day: 'numeric' });
         const newPost = {
             id: Date.now().toString() + Math.random().toString(36).substr(2, 6),
             title: title.trim().substring(0, 100),
@@ -327,15 +322,15 @@
         return true;
     }
     
-    function showToastGuardado() {
+    function showToastSaved() {
         const toast = document.getElementById("saveToast");
         if (toast) {
-            toast.innerText = "✓ guardado";
+            toast.innerText = "✓ saved";
             setTimeout(() => { if(toast) toast.innerText = ""; }, 1500);
         }
     }
     
-    // escucha cambios externos (multiple pestañas)
+    // cross-tab sync
     function bindStorageEvents() {
         window.addEventListener("storage", (e) => {
             if (e.key === "prof_skills") {
@@ -363,7 +358,7 @@
         });
     }
 
-    // inicializar toda la aplicación
+    // initialize app
     function init() {
         loadInitialData();
         renderSkills();
@@ -378,11 +373,11 @@
                 if (addBlogPost(title, content)) {
                     blogTitleInput.value = "";
                     blogContentInput.value = "";
-                    showToastGuardado();
+                    showToastSaved();
                 }
             });
         }
-        // atajo ctrl+enter en textarea blog
+        // Ctrl+Enter shortcut for blog textarea
         if (blogContentInput) {
             blogContentInput.addEventListener("keydown", (e) => {
                 if ((e.ctrlKey || e.metaKey) && e.key === "Enter") {
@@ -391,7 +386,7 @@
                 }
             });
         }
-        // auto guardado periódico opcional (ya se guarda en cada cambio)
+        // periodic auto-save (though already saved on each change)
         setInterval(() => {
             saveSkillsToLocal();
             saveLanguagesToLocal();
