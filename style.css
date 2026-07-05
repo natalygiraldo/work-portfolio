@@ -1,0 +1,145 @@
+ :root {
+            --harvard-red: #A51C30;
+            --charcoal: #222222;
+            --muted-gray: #555555;
+            --line-gray: #dddddd;
+        }
+
+        body {
+            font-family: 'Georgia', 'Times New Roman', serif;
+            color: var(--charcoal);
+            line-height: 1.5;
+            margin: 0;
+            padding: 40px 20px;
+            background-color: #fcfcfc;
+        }
+
+        .container {
+            max-width: 800px;
+            margin: 0 auto;
+            background: #ffffff;
+        }
+
+        /* Header / Contact Info */
+        header {
+            text-align: center;
+            margin-bottom: 30px;
+        }
+
+        header h1 {
+            font-size: 28px;
+            font-weight: normal;
+            letter-spacing: 1px;
+            margin-bottom: 5px;
+            text-transform: uppercase;
+            color: var(--charcoal);
+        }
+
+        .subtitle {
+            font-style: italic;
+            color: var(--harvard-red);
+            font-size: 16px;
+            margin-bottom: 15px;
+        }
+
+        .contact-links {
+            font-family: 'Arial', sans-serif;
+            font-size: 13px;
+            color: var(--muted-gray);
+        }
+
+        .contact-links a {
+            color: var(--muted-gray);
+            text-decoration: none;
+            margin: 0 8px;
+        }
+
+        .contact-links a:hover {
+            text-decoration: underline;
+            color: var(--harvard-red);
+        }
+
+        /* Section Formatting */
+        section {
+            margin-bottom: 25px;
+        }
+
+        h2 {
+            font-family: 'Arial', sans-serif;
+            font-size: 14px;
+            letter-spacing: 1.5px;
+            text-transform: uppercase;
+            color: var(--harvard-red);
+            border-bottom: 1px solid var(--harvard-red);
+            padding-bottom: 3px;
+            margin-bottom: 15px;
+        }
+
+        /* CV Grid Items */
+        .cv-item {
+            margin-bottom: 15px;
+        }
+
+        .cv-row {
+            display: flex;
+            justify-content: space-between;
+            align-items: baseline;
+            margin-bottom: 3px;
+        }
+
+        .title-company {
+            font-size: 15px;
+            font-weight: bold;
+        }
+
+        .title-company em {
+            font-weight: normal;
+            color: var(--muted-gray);
+        }
+
+        .date-location {
+            font-family: 'Arial', sans-serif;
+            font-size: 13px;
+            color: var(--muted-gray);
+            text-align: right;
+        }
+
+        /* Lists and Details */
+        ul {
+            margin: 5px 0 10px 20px;
+            padding: 0;
+        }
+
+        li {
+            font-size: 14.5px;
+            margin-bottom: 4px;
+            text-align: justify;
+        }
+
+        /* Languages Table */
+        .lang-table {
+            width: 100%;
+            border-collapse: collapse;
+            font-size: 14.5px;
+            margin-top: 10px;
+        }
+
+        .lang-table td {
+            padding: 4px 0;
+            width: 50%;
+            vertical-align: top;
+        }
+
+        .lang-name {
+            font-weight: bold;
+        }
+
+        .lang-level {
+            font-style: italic;
+            color: var(--muted-gray);
+        }
+
+        @media print {
+            body { padding: 0; background: #fff; }
+            .container { max-width: 100%; }
+        }
